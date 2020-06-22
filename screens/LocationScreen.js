@@ -6,15 +6,13 @@ import {
   Button,
   FlatList,
   ImageBackground,
+  SafeAreaView,
+  Platform,
+  StatusBar,
 } from 'react-native';
 
-function Question({ location }) {
-  return (
-    <View style={{ width: 300, marginBottom: 10 }}>
-      <Button title={location} style={styles.locationBtn} />
-    </View>
-  );
-}
+import ListLocations from '../components/ListLocations';
+import colors from '../config/colors';
 
 const LocationScreen = ({ navigation }) => {
   const DATA = [
@@ -41,27 +39,45 @@ const LocationScreen = ({ navigation }) => {
   ];
   return (
     <ImageBackground
-      source={require('../assets/check_app_.png')}
+      source={require('../app/assets/location.png')}
       style={styles.image}
     >
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <FlatList
           data={DATA}
-          renderItem={({ item }) => <Question location={item.location} />}
+          renderItem={({ item }) => (
+            <ListLocations
+              location={item.location}
+              locationID={item.id}
+              navigation={navigation}
+            />
+          )}
           keyExtractor={(item) => item.id}
         />
         <View style={{ width: 300, marginBottom: 10 }}>
           <Button
             style={styles.locationBtn}
-            title="Go to question"
-            onPress={() => navigation.navigate('Question')}
+            title="Go to Login"
+            onPress={() => navigation.navigate('Login')}
           />
           <Button
             title="Go to home Screen"
             onPress={() => navigation.navigate('Home')}
           />
+          <Button
+            title="Go to details Screen"
+            onPress={() => navigation.navigate('Details')}
+          />
+          <Button
+            title="Go to welcome Screen"
+            onPress={() => navigation.navigate('Welcome')}
+          />
+          <Button
+            title="Go to user account Screen"
+            onPress={() => navigation.navigate('User Account')}
+          />
         </View>
-      </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 };
@@ -69,10 +85,10 @@ const LocationScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#bb3700',
+    borderColor: colors.border,
     borderWidth: 5,
   },
   image: {

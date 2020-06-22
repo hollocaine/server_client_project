@@ -6,6 +6,11 @@ import { StyleSheet } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import LocationScreen from '../screens/LocationScreen';
 import QuestionScreen from '../screens/QuestionScreen';
+import DetailsScreen from '../screens/DetailsScreen';
+import LoginScreen from '../screens/LoginScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import UserAccountScreen from '../screens/UserAccountScreen';
+import colors from '../config/colors';
 const Stack = new createStackNavigator();
 
 const AppNavigation = (props) => {
@@ -14,7 +19,7 @@ const AppNavigation = (props) => {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#cc3700',
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: 'bold',
@@ -25,8 +30,12 @@ const AppNavigation = (props) => {
           component={HomeScreen}
           options={{ title: 'Overview' }}
         />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Location" component={LocationScreen} />
         <Stack.Screen name="Question" component={QuestionScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="User Account" component={UserAccountScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

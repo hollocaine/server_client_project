@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -9,51 +9,84 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-function Question({ question }) {
-  return (
-    <View style={styles.questPos}>
-      <Text>{question}</Text>
-      <View style={styles.buttonHolder}>
-        <View style={{ width: 100, marginRight: 10 }}>
-          <Button title="Yes" color="#33aa77" />
-        </View>
-        <View style={{ width: 100, marginRight: 10 }}>
-          <Button title="No" color="#ff4500" />
-        </View>
-        <View style={{ width: 100 }}>
-          <Button title="N/A" color="#00bfff" />
-        </View>
-      </View>
-    </View>
-  );
-}
-const QuestionScreen = () => {
+import ListQuestions from '../components/ListQuestions';
+import colors from '../config/colors';
+
+const QuestionScreen = (props) => {
+  const [locationID, setLocationID] = useState(props.route.params.locationID);
   const DATA = [
     {
-      id: '1',
-      question: 'Is there a fire extinguisher?',
+      locationID: '1',
+      questions: [
+        {
+          id: '1',
+          question: 'Is there a fire extinguisher?',
+        },
+        {
+          id: '2',
+          question: 'Is there a fire alarm?',
+        },
+        {
+          id: '3',
+          question: 'Is there a fire hose?',
+        },
+      ],
     },
-
     {
-      id: '2',
-      question: 'Is there a fire alarm?',
+      locationID: '2',
+      questions: [
+        {
+          id: '1',
+          question: 'Is there a bigger fire extinguisher?',
+        },
+        {
+          id: '2',
+          question: 'Is there a smaller fire alarm?',
+        },
+        {
+          id: '3',
+          question: 'Is there a larger fire hose?',
+        },
+      ],
     },
-
     {
-      id: '3',
-      question: 'Is there a fire hose?',
+      locationID: '3',
+      questions: [
+        {
+          id: '1',
+          question: 'Get the  hell out theres a fire?',
+        },
+        {
+          id: '2',
+          question: 'Any marshmallows?',
+        },
+        {
+          id: '3',
+          question: 'Put the kettle on?',
+        },
+        {
+          id: '4',
+          question: 'Call the fire brigade?',
+        },
+      ],
     },
   ];
   return (
     <ImageBackground
-      source={require('../assets/check_app_.png')}
+      source={require('../app/assets/extinguisher.png')}
       style={styles.image}
     >
       <View style={styles.container}>
         <FlatList
           data={DATA}
-          renderItem={({ item }) => <Question question={item.question} />}
-          keyExtractor={(item) => item.id}
+          renderItem={({ item }) =>
+            item.locationID === locationID
+              ? item.questions.map((v, i) => (
+                  <ListQuestions key={i} question={v.question} />
+                ))
+              : null
+          }
+          keyExtractor={(item) => item.locationID}
         />
       </View>
     </ImageBackground>
@@ -65,7 +98,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#bb3700',
+    borderColor: colors.border,
     borderWidth: 5,
   },
   questPos: {
