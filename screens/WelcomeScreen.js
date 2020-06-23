@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 import AppButton from '../components/AppButton';
-const WelcomeScreen = (props) => {
+const WelcomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
       style={styles.background}
@@ -17,8 +17,16 @@ const WelcomeScreen = (props) => {
     >
       <Image style={styles.logo} source={require('../app/assets/logo_.png')} />
       <View style={styles.btnsContainer}>
-        <AppButton title="Login" color="primary" />
-        <AppButton title="Register" style={styles.registerBtn} />
+        <AppButton
+          title="Login"
+          color="primary"
+          onPress={() => navigation.navigate('Login')}
+        />
+        <AppButton
+          title="Register"
+          style={styles.registerBtn}
+          onPress={() => navigation.navigate('Registration Form')}
+        />
       </View>
     </ImageBackground>
   );

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import ListLocations from '../components/ListLocations';
+
 import colors from '../config/colors';
 
 const LocationScreen = ({ navigation }) => {
@@ -63,6 +64,10 @@ const LocationScreen = ({ navigation }) => {
           <Button
             title="Go to home Screen"
             onPress={() => navigation.navigate('Home')}
+          />
+          <Button
+            title="Go to registration"
+            onPress={() => navigation.navigate('Registration Form')}
           />
           <Button
             title="Go to details Screen"

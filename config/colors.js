@@ -3,6 +3,6 @@ export default {
   secondary: '#0C85F3',
   border: '#bb3700',
   white: '#fff',
-  light: 'lightgrey',
+  light: '#e8f4f8',
   medium: '#0C85F3',
 };

@@ -11,6 +11,7 @@ import LoginScreen from '../screens/LoginScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import UserAccountScreen from '../screens/UserAccountScreen';
 import colors from '../config/colors';
+import RegistrationFormScreen from '../screens/RegistrationFormScreen';
 const Stack = new createStackNavigator();
 
 const AppNavigation = (props) => {
@@ -35,6 +36,10 @@ const AppNavigation = (props) => {
         <Stack.Screen name="Question" component={QuestionScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen
+          name="Registration Form"
+          component={RegistrationFormScreen}
+        />
         <Stack.Screen name="User Account" component={UserAccountScreen} />
       </Stack.Navigator>
     </NavigationContainer>
