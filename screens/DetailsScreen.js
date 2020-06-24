@@ -9,6 +9,27 @@ import {
   TextInput,
   Image,
 } from 'react-native';
+import SubmitButton from '../components/forms/SubmitButton';
+import AppForm from '../components/forms/AppForm';
+import AppFormField from '../components/forms/AppFormField';
+const validationSchema = Yup.object().shape({
+  fname: Yup.string()
+    .required()
+    .min(2)
+    .label('First name'),
+  sname: Yup.string()
+    .required()
+    .min(2)
+    .label('Surname'),
+  email: Yup.string()
+    .required()
+    .min(2)
+    .label('Email'),
+  password: Yup.string()
+    .required()
+    .min(8)
+    .label('Password'),
+});
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const DetailsScreen = (props) => {
@@ -17,21 +38,23 @@ const DetailsScreen = (props) => {
       <View style={styles.textStyle}>
         <Text>Non Compliance</Text>
       </View>
-      <TextInput
+      <AppFormField
         style={styles.inputBox}
         onChangeText={(text) => onChangeText(text)}
         placeholder="Title"
+        name="title"
         placeholderTextColor="grey"
         underlineColorAndroid="transparent"
       />
       <View style={styles.textAreaContainer}>
-        <TextInput
+        <AppFormField
           style={styles.textArea}
           underlineColorAndroid="transparent"
-          placeholder="Input report here"
+          placeholder="Report..."
+          name="report"
           placeholderTextColor="grey"
           numberOfLines={10}
-          multiline={true}
+          multiline
         />
       </View>
       <View>

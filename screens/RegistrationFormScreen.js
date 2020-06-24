@@ -51,6 +51,7 @@ function RegistrationFormScreen(props) {
               name="fname"
               placeholder="First Name"
               textContentType="text"
+              maxLength={15}
             />
             <AppFormField
               autoCapitalize="none"
@@ -60,6 +61,7 @@ function RegistrationFormScreen(props) {
               name="sname"
               placeholder="Surname"
               textContentType="text"
+              maxLength={15}
             />
             <AppFormField
               autoCapitalize="none"
@@ -78,6 +80,7 @@ function RegistrationFormScreen(props) {
               name="email"
               placeholder="Email"
               textContentType="emailAddress"
+              maxLength={255}
             />
             <AppFormField
               autoCapitalize="none"
@@ -87,6 +90,7 @@ function RegistrationFormScreen(props) {
               placeholder="Password"
               secureTextEntry
               textContentType="password"
+              maxLength={12}
             />
             <SubmitButton title="Save" />
           </AppForm>
