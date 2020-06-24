@@ -6,24 +6,7 @@ import Screen from '../components/Screen';
 import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
 import AppFormField from '../components/forms/AppFormField';
-const validationSchema = Yup.object().shape({
-  fname: Yup.string()
-    .required()
-    .min(2)
-    .label('First name'),
-  sname: Yup.string()
-    .required()
-    .min(2)
-    .label('Surname'),
-  email: Yup.string()
-    .required()
-    .min(2)
-    .label('Email'),
-  password: Yup.string()
-    .required()
-    .min(8)
-    .label('Password'),
-});
+
 function RegistrationFormScreen(props) {
   return (
     <ImageBackground
