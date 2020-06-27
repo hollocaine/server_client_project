@@ -26,7 +26,7 @@ function ListItem({
         <View style={styles.container}>
           {IconComponent}
           {image && <Image style={styles.image} source={image} />}
-          <View style={styles.detailsContainer}>
+          <View style={styles.ReportContainer}>
             <AppText style={styles.title}>{title}</AppText>
             {subTitle && (
               <AppText style={styles.subTitle}>Username: {subTitle}</AppText>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: colors.white,
   },
-  detailsContainer: {
+  ReportContainer: {
     marginLeft: 10,
     justifyContent: 'center',
   },

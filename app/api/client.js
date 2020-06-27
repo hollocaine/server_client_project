@@ -1,6 +1,6 @@
 import { create } from 'apisauce';
 
-const apiClient = create({ baseURL: '192.168.56.1:9000/api' });
+const apiClient = create({ baseURL: '13.74.31.85:80/list' });
 
 apiClient.get('/location').then((Response) => {
   if (!response.ok) {

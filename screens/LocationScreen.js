@@ -70,8 +70,20 @@ const LocationScreen = ({ navigation }) => {
             onPress={() => navigation.navigate('Registration Form')}
           />
           <Button
-            title="Go to details Screen"
-            onPress={() => navigation.navigate('Details')}
+            title="Go to location screen"
+            onPress={() => navigation.navigate('Location Form')}
+          />
+          <Button
+            title="Go to calander screen"
+            onPress={() => navigation.navigate('Calander')}
+          />
+          <Button
+            title="Go to questions screen"
+            onPress={() => navigation.navigate('Create questions')}
+          />
+          <Button
+            title="Go to Report Screen"
+            onPress={() => navigation.navigate('Report')}
           />
           <Button
             title="Go to welcome Screen"

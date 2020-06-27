@@ -6,12 +6,15 @@ import { StyleSheet } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import LocationScreen from '../screens/LocationScreen';
 import QuestionScreen from '../screens/QuestionScreen';
-import DetailsScreen from '../screens/DetailsScreen';
+import ReportScreen from '../screens/ReportScreen';
 import LoginScreen from '../screens/LoginScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import UserAccountScreen from '../screens/UserAccountScreen';
 import colors from '../config/colors';
 import RegistrationFormScreen from '../screens/RegistrationFormScreen';
+import LocationFormScreen from '../screens/LocationFormScreen';
+import QuestionFormScreen from '../screens/QuestionFormScreen';
+import CalanderScreen from '../screens/CalanderScreen';
 const Stack = new createStackNavigator();
 
 const AppNavigation = (props) => {
@@ -32,10 +35,13 @@ const AppNavigation = (props) => {
           options={{ title: 'Overview' }}
         />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Calander" component={CalanderScreen} />
         <Stack.Screen name="Location" component={LocationScreen} />
         <Stack.Screen name="Question" component={QuestionScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Report" component={ReportScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Location Form" component={LocationFormScreen} />
+        <Stack.Screen name="Create questions" component={QuestionFormScreen} />
         <Stack.Screen
           name="Registration Form"
           component={RegistrationFormScreen}

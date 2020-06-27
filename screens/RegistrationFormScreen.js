@@ -7,6 +7,25 @@ import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
 import AppFormField from '../components/forms/AppFormField';
 
+const validationSchema = Yup.object().shape({
+  fname: Yup.string()
+    .required()
+    .min(2)
+    .label('First name'),
+  surname: Yup.string()
+    .required()
+    .min(2)
+    .label('Surname'),
+  email: Yup.string()
+    .required()
+    .email()
+    .label('Email'),
+  password: Yup.string()
+    .required()
+    .min(8)
+    .label('Password'),
+});
+
 function RegistrationFormScreen(props) {
   return (
     <ImageBackground
@@ -33,7 +52,7 @@ function RegistrationFormScreen(props) {
               keyboardType="default"
               name="fname"
               placeholder="First Name"
-              textContentType="text"
+              textContentType="name"
               maxLength={15}
             />
             <AppFormField
@@ -43,7 +62,7 @@ function RegistrationFormScreen(props) {
               keyboardType="default"
               name="sname"
               placeholder="Surname"
-              textContentType="text"
+              textContentType="name"
               maxLength={15}
             />
             <AppFormField
@@ -53,7 +72,7 @@ function RegistrationFormScreen(props) {
               keyboardType="default"
               name="department"
               placeholder="Department"
-              textContentType="text"
+              textContentType="jobTitle"
             />
             <AppFormField
               autoCapitalize="none"
