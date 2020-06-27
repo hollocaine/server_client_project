@@ -15,6 +15,7 @@ import RegistrationFormScreen from '../screens/RegistrationFormScreen';
 import LocationFormScreen from '../screens/LocationFormScreen';
 import QuestionFormScreen from '../screens/QuestionFormScreen';
 import CalanderScreen from '../screens/CalanderScreen';
+import CameraScreen from '../components/CameraScreen';
 const Stack = new createStackNavigator();
 
 const AppNavigation = (props) => {
@@ -40,6 +41,7 @@ const AppNavigation = (props) => {
         <Stack.Screen name="Question" component={QuestionScreen} />
         <Stack.Screen name="Report" component={ReportScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Camera" component={CameraScreen} />
         <Stack.Screen name="Location Form" component={LocationFormScreen} />
         <Stack.Screen name="Create questions" component={QuestionFormScreen} />
         <Stack.Screen

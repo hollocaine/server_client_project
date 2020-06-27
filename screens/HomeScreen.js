@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import AppText from '../components/AppText';
-import AppButton from '../components/AppButton';
 
 const HomeScreen = ({ navigation }) => {
   return (

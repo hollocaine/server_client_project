@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 import Screen from '../components/Screen';
 import { AppForm, AppFormField, SubmitButton } from '../components/forms';
+import CameraScreen from '../components/CameraScreen';
 const validationSchema = Yup.object().shape({
   question: Yup.string()
     .required()

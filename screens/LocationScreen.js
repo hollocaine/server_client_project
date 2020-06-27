@@ -82,6 +82,10 @@ const LocationScreen = ({ navigation }) => {
             onPress={() => navigation.navigate('Create questions')}
           />
           <Button
+            title="Go to camera screen"
+            onPress={() => navigation.navigate('Camera')}
+          />
+          <Button
             title="Go to Report Screen"
             onPress={() => navigation.navigate('Report')}
           />
