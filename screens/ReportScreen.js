@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, ImageBackground } from 'react-native';
 import * as Yup from 'yup';
 
 import Screen from '../components/Screen';
+import ImageSelector from '../components/ImageSelector';
 import { AppForm, AppFormField, SubmitButton } from '../components/forms';
 
 const validationSchema = Yup.object().shape({
@@ -77,6 +78,7 @@ function ReportScreen(props) {
             </View>
             <SubmitButton title="Save" />
           </AppForm>
+          <ImageSelector />
         </View>
       </Screen>
     </ImageBackground>

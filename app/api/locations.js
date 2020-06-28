@@ -1,6 +1,6 @@
 import client from './client';
 const endpoint = '/locations';
-getLocations = () => client.get(endpoint);
+const getLocations = () => client.get(endpoint);
 
 export default {
   getLocations,

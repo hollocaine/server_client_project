@@ -16,6 +16,7 @@ import LocationFormScreen from '../screens/LocationFormScreen';
 import QuestionFormScreen from '../screens/QuestionFormScreen';
 import CalanderScreen from '../screens/CalanderScreen';
 import CameraScreen from '../components/CameraScreen';
+import TodoList from '../screens/TodoList';
 const Stack = new createStackNavigator();
 
 const AppNavigation = (props) => {
@@ -36,6 +37,7 @@ const AppNavigation = (props) => {
           options={{ title: 'Overview' }}
         />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Todo" component={TodoList} />
         <Stack.Screen name="Calander" component={CalanderScreen} />
         <Stack.Screen name="Location" component={LocationScreen} />
         <Stack.Screen name="Question" component={QuestionScreen} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,34 +10,36 @@ import {
   Platform,
   StatusBar,
 } from 'react-native';
+import axios from 'axios';
 
 import ListLocations from '../components/ListLocations';
 
 import colors from '../config/colors';
 
+function useLocations() {
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    fetch('http://192.168.68.103:8000/location')
+      .then((response) => response.json())
+      .then((data) => {
+        setLocations(data);
+      });
+  }, []);
+  return locations;
+}
+function isEmpty(obj) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
+  }
+  return true;
+}
 const LocationScreen = ({ navigation }) => {
-  const DATA = [
-    {
-      id: '1',
-      location: 'Main Office',
-    },
-    {
-      id: '2',
-      location: 'Accounts',
-    },
-    {
-      id: '3',
-      location: 'Warehouse',
-    },
-    {
-      id: '4',
-      location: 'Factory Floor',
-    },
-    {
-      id: '5',
-      location: 'Dispatch',
-    },
-  ];
+  const locations = useLocations();
+  const data = JSON.stringify(locations);
+  if (!isEmpty(data)) {
+    return data;
+  }
   return (
     <ImageBackground
       source={require('../app/assets/location.png')}
@@ -45,15 +47,15 @@ const LocationScreen = ({ navigation }) => {
     >
       <SafeAreaView style={styles.container}>
         <FlatList
-          data={DATA}
-          renderItem={({ item }) => (
+          data={data}
+          renderItem={({ item, i }) => (
             <ListLocations
-              location={item.location}
+              location={item.name}
               locationID={item.id}
               navigation={navigation}
             />
           )}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
         />
         <View style={{ width: 300, marginBottom: 10 }}>
           <Button
@@ -68,6 +70,10 @@ const LocationScreen = ({ navigation }) => {
           <Button
             title="Go to registration"
             onPress={() => navigation.navigate('Registration Form')}
+          />
+          <Button
+            title="Go todo"
+            onPress={() => navigation.navigate('TodoList')}
           />
           <Button
             title="Go to location screen"

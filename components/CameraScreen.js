@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Camera } from 'expo-camera';
+import CameraRoll from '@react-native-community/cameraroll';
+import * as ImagePicker from 'expo-image-picker';
+import * as FileSystem from 'expo-file-system';
 
 export default function CameraScreen() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -58,7 +61,7 @@ export default function CameraScreen() {
             onPress={async () => {
               if (cameraRef) {
                 let photo = await cameraRef.takePictureAsync();
-                console.log('photo', photo);
+                CameraRoll.save(photo.uri, [{ photo: 'My Album' }]);
               }
             }}
           >

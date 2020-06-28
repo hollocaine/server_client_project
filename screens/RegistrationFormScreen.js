@@ -27,6 +27,26 @@ const validationSchema = Yup.object().shape({
 });
 
 function RegistrationFormScreen(props) {
+  // DBRegistration = (uid) => {
+  //   fetch("http://192.168.0.102:80/TinyvideosAPI/users.php", {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       fbuid: uid,
+  //       usermail: this.state.emailaddr,
+  //       userpass: this.state.pass
+  //     }),
+  //   }).then((response) => response.json())
+  //     .then((responseJson) => {
+  //       Alert.alert(responseJson);
+  //       this.props.navigation.navigate("Login")
+  //     }).catch((error) => {
+  //       console.error('MySQL error' + error);
+  //     });
+  // }
   return (
     <ImageBackground
       source={require('../app/assets/registration.png')}
