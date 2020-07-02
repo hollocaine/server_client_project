@@ -9,65 +9,52 @@ import {
   SafeAreaView,
   Platform,
   StatusBar,
+  VirtualizedList,
 } from 'react-native';
 import axios from 'axios';
 
 import ListLocations from '../components/ListLocations';
-
+import useApi from '../app/hooks/useApi';
+import locations from '../app/api/locations';
 import colors from '../config/colors';
+import Location from '../models/location';
 
-function useLocations() {
-  const [locations, setLocations] = useState([]);
-
-  useEffect(() => {
-    fetch('http://192.168.68.103:8000/location')
-      .then((response) => response.json())
-      .then((data) => {
-        setLocations(data);
-      });
-  }, []);
-  return locations;
-}
-function isEmpty(obj) {
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) return false;
-  }
-  return true;
-}
 const LocationScreen = ({ navigation }) => {
-  const locations = useLocations();
-  const data = JSON.stringify(locations);
-  if (!isEmpty(data)) {
-    return data;
+  const getLocationsApi = useApi(locations.getLocations);
+  useEffect(() => {
+    getLocationsApi.request();
+  }, []);
+  const loadedLocations = [];
+  for (const key in getLocationsApi) {
+    loadedLocations.push(new Location([key], 'lo1', getLocationsApi[key].name));
   }
+
   return (
     <ImageBackground
       source={require('../app/assets/location.png')}
       style={styles.image}
     >
       <SafeAreaView style={styles.container}>
-        <FlatList
-          data={data}
-          renderItem={({ item, i }) => (
-            <ListLocations
-              location={item.name}
-              locationID={item.id}
-              navigation={navigation}
-            />
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
         <View style={{ width: 300, marginBottom: 10 }}>
-          <Button
-            style={styles.locationBtn}
-            title="Go to Login"
-            onPress={() => navigation.navigate('Login')}
+          <FlatList
+            data={getLocationsApi.data}
+            renderItem={({ item, index }) => (
+              <ListLocations
+                key={Math.random().toString(36).substring(7)}
+                location={item.name}
+                locationID={item.id}
+                navigation={navigation}
+              />
+            )}
+            keyExtractor={(item) => {
+              Math.random().toString(36).substring(7);
+            }}
           />
           <Button
             title="Go to home Screen"
             onPress={() => navigation.navigate('Home')}
           />
-          <Button
+          {/* <Button
             title="Go to registration"
             onPress={() => navigation.navigate('Registration Form')}
           />
@@ -102,7 +89,7 @@ const LocationScreen = ({ navigation }) => {
           <Button
             title="Go to user account Screen"
             onPress={() => navigation.navigate('User Account')}
-          />
+          /> */}
         </View>
       </SafeAreaView>
     </ImageBackground>

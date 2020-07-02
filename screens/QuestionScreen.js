@@ -80,7 +80,7 @@ const QuestionScreen = (props) => {
         <FlatList
           data={DATA}
           renderItem={({ item }) =>
-            item.locationID === locationID
+            item.locationID === locationID.toString()
               ? item.questions.map((v, i) => (
                   <ListQuestions key={i} question={v.question} />
                 ))
